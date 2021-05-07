@@ -29,7 +29,8 @@ public class Main {
 					System.out.println(banco.cadastrarCliente(cliente));
 					break;
 				case 2:
-					System.out.println("Opção 2!");
+					System.out.println("Informe o cpf do cliente: ");
+					System.out.println(banco.abrirConta(s.nextLine()));
 					break;
 				case 3:
 					System.out.println("Opção 3!");
