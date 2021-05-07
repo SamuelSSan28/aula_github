@@ -7,13 +7,26 @@ public class Main {
 		Integer option;
 		Scanner s = new Scanner(System.in);
 
+		Banco banco = new Banco();
+
 		Menu mainMenu = new Menu(Arrays.asList("Cadastrar Cliente", "Cadastrar Conta", "Depósito", "Saque",
 				"Transferência", "Extrato da Conta", "Recarga de Celular", "Sair"));
 		do {
 			option = mainMenu.getSelection();
 			switch (option) {
 				case 1:
-					System.out.println("Opção 1!");
+					Cliente cliente = new Cliente();
+
+					System.out.println("Informe o nome: ");
+					cliente.setNome(s.nextLine());
+
+					System.out.println("Informe o cpf: ");
+					cliente.setCpf(s.nextLine());
+
+					System.out.println("Informe a senha: ");
+					cliente.setSenha(s.nextLine());
+
+					System.out.println(banco.cadastrarCliente(cliente));
 					break;
 				case 2:
 					System.out.println("Opção 2!");
