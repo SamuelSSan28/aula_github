@@ -49,4 +49,52 @@ public class Banco {
         return false;
     }
 
+    private Boolean verificaExisteConta(Integer numero) {
+        for (Conta conta : contas) {
+            if(conta.getNumero() == numero) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    private Boolean verificaSaldoDisponivel(Integer numero, double valor) {
+        for (Conta conta : contas) {
+            
+            if(conta.getNumero() == numero) {
+                if(conta.getSaldo() >= valor)  return true;
+               
+            }
+        }
+
+        return false;
+       
+    }
+
+
+    public Boolean transferencia(Integer cOrigem, Integer cDestino, double valor) {
+
+        Boolean contasExistem = this.verificaExisteConta(cOrigem) && this.verificaExisteConta(cDestino);
+        Boolean saldoDisponivel =  this.verificaSaldoDisponivel(cOrigem,valor);
+
+        if(contasExistem && saldoDisponivel){
+            for (Conta conta : contas) {
+                if(conta.getNumero() == cOrigem) {                  
+                    conta.setSaldo(conta.getSaldo() - valor);
+                }
+
+                if(conta.getNumero() == cDestino) {                 
+                    conta.setSaldo(conta.getSaldo() + valor);                    
+                }
+            }
+
+            return true;
+        }
+
+
+        return false;
+        
+    }
+
 }
