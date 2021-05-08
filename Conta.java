@@ -2,10 +2,12 @@ public class Conta {
 
     private String cpf;
     private Integer numero;
+    private Double saldo;
 
     public Conta(String cpf, Integer numero) {
         this.cpf = cpf;
         this.numero = numero;
+        this.saldo = 0.0;
       }
     
       public Conta() {}
@@ -16,6 +18,14 @@ public class Conta {
 
       public String getCpf() {
         return this.cpf;
+      }
+
+      public Double getSaldo() {
+        return this.saldo;
+      }
+    
+      public void setSaldo(Double valor) {
+          this.saldo = valor;
       }
     
       public void setNumero(Integer numero) {

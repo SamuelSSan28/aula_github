@@ -39,7 +39,24 @@ public class Main {
 					System.out.println("Opção 4!");
 					break;
 				case 5:
-					System.out.println("Opção 5!");
+					Integer c1,c2 = 0;
+					double valor = 0.0;
+
+					System.out.println("Informe o numero da conta de Origem: ");
+					c1 = Integer.parseInt(s.nextLine());
+
+					System.out.println("Informe o numero da conta de Destino: ");
+					c2 = Integer.parseInt(s.nextLine());
+
+					System.out.println("Informe o valor a ser tranferido: ");
+					valor = Double.valueOf(s.nextLine());
+
+
+					Boolean resultadoTransacao = banco.transferencia(c1,c2,valor);
+
+					if(resultadoTransacao) System.out.println("Transferencia realizada com sucesso");
+					else System.out.println("Nao foi possivel realizar a transferencia !\n Verifique o saldo e o numero das contas !");
+					
 					break;
 				case 6:
 					System.out.println("Opção 6!");
