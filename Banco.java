@@ -72,6 +72,16 @@ public class Banco {
         return false;     
     }
 
+    public Boolean deposito(Integer numeroConta, double valor) {
+        Integer indexConta = this.verificaExisteConta(numeroConta);
+
+        if(indexConta == -1) return false;
+
+        Conta conta = this.contas.get(indexConta);
+        conta.setSaldo(conta.getSaldo() + valor);
+
+        return true;
+    }
 
     public Boolean transferencia(Integer cOrigem, Integer cDestino, double valor) {
         Integer conta1Index = this.verificaExisteConta(cOrigem) ;

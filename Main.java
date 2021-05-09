@@ -33,7 +33,20 @@ public class Main {
 					System.out.println(banco.abrirConta(s.nextLine()));
 					break;
 				case 3:
-					System.out.println("Opção 3!");
+					Integer numeroConta = 0;
+					double valorDeposito = 0.0;
+
+					System.out.println("Informe o numero da conta: ");
+					numeroConta = Integer.parseInt(s.nextLine());
+
+					System.out.println("Informe o valor a ser depositado: ");
+					valorDeposito = Double.valueOf(s.nextLine());
+
+					Boolean resultadoDeposito = banco.deposito(numeroConta, valorDeposito);
+
+					if(resultadoDeposito) System.out.println("\nDepósito realizado com sucesso!\n");
+					else System.out.println("\nNão foi possível realizar o depósito!\nPor favor, verifique o número da conta.\n");
+
 					break;
 				case 4:
 					System.out.println("Opção 4!");
