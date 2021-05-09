@@ -57,12 +57,11 @@ public class Banco {
                 return index;
             }
         }
-        return index;
+        return -1;
     }
 
 
     private Boolean verificaSaldoDisponivel(Integer numero, double valor) {
-        int i = -1;
         for (Conta conta : contas) {
             
             if(conta.getNumero() == numero) {
