@@ -52,7 +52,19 @@ public class Main {
 
 					break;
 				case 4:
-					System.out.println("Opção 4!");
+					Integer numConta = 0;
+					double valorSaque = 0.0;
+
+					System.out.println("Informe o numero da conta: ");
+					numConta = Integer.parseInt(s.nextLine());
+
+					System.out.println("Informe o valor a ser sacado: ");
+					valorSaque = Double.valueOf(s.nextLine());
+
+					Boolean resultadoSaque = banco.saque(numConta, valorSaque);
+
+					if(resultadoSaque) System.out.println("\n Saque realizado com sucesso!\n");
+					else System.out.println("\nNão foi possível realizar o saque!\nPor favor, verifique o saldo e número da conta.\n");
 					break;
 				case 5:
 					Integer c1, c2 = 0;

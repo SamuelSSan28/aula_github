@@ -86,6 +86,18 @@ public class Banco {
         return true;
     }
 
+    public Boolean saque(Integer numeroConta, double valor) {
+        Integer indexConta = this.verificaExisteConta(numeroConta);
+        Boolean temSaldoDisponivel = this.verificaSaldoDisponivel(numeroConta, valor);
+
+        if(indexConta == -1 || !temSaldoDisponivel) return false;
+
+        Conta conta = this.contas.get(indexConta);
+        conta.setSaldo(conta.getSaldo() - valor);
+
+        return true;
+    }
+
     public Boolean transferencia(Integer cOrigem, Integer cDestino, double valor) {
         Integer conta1Index = this.verificaExisteConta(cOrigem);
         Integer conta2Index = this.verificaExisteConta(cDestino);
