@@ -79,6 +79,7 @@ public class Banco {
 
         Conta conta = this.contas.get(indexConta);
         conta.setSaldo(conta.getSaldo() + valor);
+        conta.addExtrato("+ " + valor +"\n");
 
         return true;
     }
@@ -91,6 +92,7 @@ public class Banco {
 
         Conta conta = this.contas.get(indexConta);
         conta.setSaldo(conta.getSaldo() - valor);
+        conta.addExtrato("- " + valor +"\n");
 
         return true;
     }
