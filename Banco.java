@@ -49,51 +49,61 @@ public class Banco {
         return false;
     }
 
-    private Boolean verificaExisteConta(Integer numero) {
+    private Integer verificaExisteConta(Integer numero) {
+        Integer index = -1;
         for (Conta conta : contas) {
+            index++;
             if(conta.getNumero() == numero) {
-                return true;
+                return index;
             }
         }
-        return false;
+        return index;
     }
 
 
     private Boolean verificaSaldoDisponivel(Integer numero, double valor) {
+        int i = -1;
         for (Conta conta : contas) {
             
             if(conta.getNumero() == numero) {
                 if(conta.getSaldo() >= valor)  return true;
-               
             }
         }
 
-        return false;
-       
+        return false;     
     }
 
 
     public Boolean transferencia(Integer cOrigem, Integer cDestino, double valor) {
-
-        Boolean contasExistem = this.verificaExisteConta(cOrigem) && this.verificaExisteConta(cDestino);
+        Integer conta1Index = this.verificaExisteConta(cOrigem) ;
+        Integer conta2Index = this.verificaExisteConta(cDestino);
         Boolean saldoDisponivel =  this.verificaSaldoDisponivel(cOrigem,valor);
 
-        if(contasExistem && saldoDisponivel){
-            for (Conta conta : contas) {
-                if(conta.getNumero() == cOrigem) {                  
-                    conta.setSaldo(conta.getSaldo() - valor);
-                }
+        if(conta1Index >= 0 && conta2Index >= 0 && saldoDisponivel){
+            Conta c1 = this.contas.get(conta1Index);
+            c1.setSaldo(c1.getSaldo() - valor);
+            c1.addExtrato("- "+ valor +"\n");
 
-                if(conta.getNumero() == cDestino) {                 
-                    conta.setSaldo(conta.getSaldo() + valor);                    
-                }
-            }
+            Conta c2 = this.contas.get(conta2Index);
+            c2.setSaldo(c2.getSaldo() + valor);  
+            c2.addExtrato("+ "+ valor+"\n");  
 
             return true;
         }
 
-
         return false;
+        
+    }
+
+    public String getExtrato(Integer numero_conta) {
+        Integer conta1Index = this.verificaExisteConta(numero_conta) ;
+       
+        if(conta1Index >= 0){
+            Conta c1 = this.contas.get(conta1Index);
+            return c1.getExtrato() + "\n Saldo atual: " + c1.getSaldo();
+        }
+
+        return "Conta não existe!";
         
     }
 

@@ -59,7 +59,12 @@ public class Main {
 					
 					break;
 				case 6:
-					System.out.println("Opção 6!");
+					System.out.println("Informe o numero da conta: ");
+					Integer numero_conta = Integer.parseInt(s.nextLine());
+
+					System.out.println( "\n*****Extrato******" );
+					System.out.println( banco.getExtrato(numero_conta) );
+					System.out.println( "******************\n" );
 					break;
 				case 7:
 					System.out.println("Opção 7!");
