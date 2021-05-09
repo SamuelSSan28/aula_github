@@ -44,15 +44,18 @@ public class Main {
 
 					Boolean resultadoDeposito = banco.deposito(numeroConta, valorDeposito);
 
-					if(resultadoDeposito) System.out.println("\nDepósito realizado com sucesso!\n");
-					else System.out.println("\nNão foi possível realizar o depósito!\nPor favor, verifique o número da conta.\n");
+					if (resultadoDeposito)
+						System.out.println("\nDepósito realizado com sucesso!\n");
+					else
+						System.out.println(
+								"\nNão foi possível realizar o depósito!\nPor favor, verifique o número da conta.\n");
 
 					break;
 				case 4:
 					System.out.println("Opção 4!");
 					break;
 				case 5:
-					Integer c1,c2 = 0;
+					Integer c1, c2 = 0;
 					double valor = 0.0;
 
 					System.out.println("Informe o numero da conta de Origem: ");
@@ -64,23 +67,41 @@ public class Main {
 					System.out.println("Informe o valor a ser tranferido: ");
 					valor = Double.valueOf(s.nextLine());
 
+					Boolean resultadoTransacao = banco.transferencia(c1, c2, valor);
 
-					Boolean resultadoTransacao = banco.transferencia(c1,c2,valor);
+					if (resultadoTransacao)
+						System.out.println("Transferencia realizada com sucesso");
+					else
+						System.out.println(
+								"Nao foi possivel realizar a transferencia !\n Verifique o saldo e o numero das contas !");
 
-					if(resultadoTransacao) System.out.println("Transferencia realizada com sucesso");
-					else System.out.println("Nao foi possivel realizar a transferencia !\n Verifique o saldo e o numero das contas !");
-					
 					break;
 				case 6:
 					System.out.println("Informe o numero da conta: ");
 					Integer numero_conta = Integer.parseInt(s.nextLine());
 
-					System.out.println( "\n*****Extrato******" );
-					System.out.println( banco.getExtrato(numero_conta) );
-					System.out.println( "******************\n" );
+					System.out.println("\n*****Extrato******");
+					System.out.println(banco.getExtrato(numero_conta));
+					System.out.println("******************\n");
 					break;
 				case 7:
-					System.out.println("Opção 7!");
+					Integer conta = 0;
+					String telefone;
+
+					System.out.println("Informe o numero da conta: ");
+					conta = Integer.parseInt(s.nextLine());
+
+					System.out.println("Informe o numero do telefone: ");
+					telefone = s.nextLine();
+
+					Boolean resultadoRecarga = banco.recarga(conta, telefone);
+
+					if (resultadoRecarga)
+						System.out.println("\nRecarga para o número "+ telefone +" realizada com sucesso!\n");
+					else
+						System.out.println(
+								"\nNão foi possível realizar a recarga!\nPor favor, verifique o número da conta e se há saldo disponível.\n");
+
 					break;
 				case 8:
 					System.out.println("Tchau!");
