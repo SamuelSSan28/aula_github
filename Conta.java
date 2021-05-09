@@ -1,11 +1,13 @@
 public class Conta {
 
     private String cpf;
+    private String extrato;
     private Integer numero;
     private Double saldo;
 
     public Conta(String cpf, Integer numero) {
         this.cpf = cpf;
+        this.extrato = "";
         this.numero = numero;
         this.saldo = 0.0;
       }
@@ -22,6 +24,13 @@ public class Conta {
 
       public Double getSaldo() {
         return this.saldo;
+      }
+
+      public String getExtrato() {
+        return this.extrato;
+      }
+      public void addExtrato(String novaTransacao) {
+        this.extrato += novaTransacao;
       }
     
       public void setSaldo(Double valor) {
